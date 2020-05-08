@@ -1,0 +1,29 @@
+using System;
+using System.Collections;
+
+public class Program
+{
+	public static void Main()
+	{
+		int[] a = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
+		int rif=10;
+		RelativeOrder(a, rif);
+		Array.ForEach(a,Console.WriteLine);
+	}
+  
+  
+	public class MyComparer : IComparer
+	{
+		public int refer;
+		public MyComparer(int r){ refer=r; }
+		public int Compare(Object x, Object y){
+       		return (Math.Abs((int)x-refer).CompareTo(Math.Abs((int)y-refer)));
+   		}
+	}
+
+	public static void RelativeOrder(int [] v, int rif)
+	{
+		Array.Sort(v,new MyComparer(rif));
+	}
+  
+}
